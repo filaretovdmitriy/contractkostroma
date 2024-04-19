@@ -1,0 +1,86 @@
+/*-----------------------------
+Payments section
+-----------------------------*/
+.payments {
+  position: relative;
+  width: 100%;
+
+  &__container {
+    max-width:1440px;
+    width: 100%;
+    padding: 60px 24px;
+    margin: 0 auto;
+
+    @media (max-width: 1024px) {
+      padding:40px 0;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    display:flex;
+    justify-content: space-evenly;
+    margin-bottom:46px;
+
+    @media (max-width: 1024px) {
+      margin-bottom:26px;
+    }
+
+    & > .arrow {
+      display:none;
+
+      @media (max-width: 1024px) {
+        display:flex;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    & > div {
+      display:flex;
+
+      & > div {
+        display:flex;
+      }
+    }
+  }
+
+  &__actions {
+    display:flex;
+    justify-content:center;
+    margin-top: 46px;
+
+    @media (max-width: 1024px) {
+      margin-top:26px;
+    }
+  }
+}
+
+.payment {
+  background:var(--c-gray);
+  display:flex;
+  flex-direction:column;
+  padding:30px;
+  height:100%;
+
+  @media (max-width: 768px) {
+    padding:20px;
+  }
+
+  & > *:not(:last-child) {
+    margin-bottom:20px;
+  }
+
+  &__wrapper {
+    padding:15px;
+    display: flex;
+
+    @media (max-width: 1024px) {
+      padding:10px;
+    }
+  }
+}

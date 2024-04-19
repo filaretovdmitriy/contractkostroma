@@ -1,33 +1,37 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import './assets/css/utils/_reset.scss';
+import './assets/css/utils/_vars.scss';
+import './assets/css/utils/_mixins.scss';
+
+import './assets/css/_global.scss';
+import './assets/css/components/_hero.scss';
+import './assets/css/components/_army.scss';
+import './assets/css/components/_arrow.scss';
+import './assets/css/components/_contacts.scss';
+import './assets/css/components/_footer.scss';
+
+import './assets/css/components/_gallery.scss';
+import './assets/css/components/_header.scss';
+import './assets/css/components/_help.scss';
+import './assets/css/components/_hero.scss';
+import './assets/css/components/_howto.scss';
+import './assets/css/components/_join.scss';
+import './assets/css/components/_payments.scss';
+import './assets/css/components/_requirements.scss';
+import './assets/css/components/_steps.scss';
+import './assets/css/components/_support.scss';
+import './assets/css/components/_typo.scss';
+import { Header } from './features/header/Header'
+import { Main } from './features/main/Main';
+import { Footer } from './features/footer/Footer';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header/>
+      <Main/>
+      <Footer/>
     </>
   )
 }

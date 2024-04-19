@@ -1,0 +1,15 @@
+.arrow {
+  color: #aaa;
+  padding:0 12px;
+  display:flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    color:#777;
+  }
+
+  &_prev {
+    transform: scaleX(-1);
+  }
+}

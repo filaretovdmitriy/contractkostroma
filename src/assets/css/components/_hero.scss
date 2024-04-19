@@ -1,0 +1,136 @@
+/*-----------------------------
+Hero section
+-----------------------------*/
+:root {
+  --hero-title-size: 52px;
+
+  @media (max-width: 768px) {
+    --hero-title-size: 42px;
+  }
+  @media (max-width: 640px) {
+    --hero-title-size: 32px;
+  }
+  @media (max-width: 480px) {
+    --hero-title-size: 24px;
+  }
+}
+
+
+.hero {
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content: center;
+  padding-top:120px;
+  padding-bottom:60px;
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+    color:white;
+    max-width:1024px;
+    margin:40px auto;
+    padding:24px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      padding:16px;
+    }
+  }
+
+  &__title {
+    font-size:var(--hero-title-size);
+    line-height:130%;
+    font-family: var(--font-brand);
+    animation: fadeIn 1000ms ease-in-out forwards;
+    animation-direction: alternate;
+    animation-delay: 500ms;
+    transform:translateY(-50px);
+    opacity: 0;
+  }
+
+  &__desc {
+    max-width: 600px;
+    margin:24px auto 32px auto;
+    line-height:26px;
+    animation: fadeIn 1000ms ease-in-out forwards;
+    animation-direction: alternate;
+    animation-delay: 700ms;
+    transform:translateY(-50px);
+    opacity: 0;
+  }
+
+  &__actions {
+    animation: fadeIn 1000ms ease-in-out forwards;
+    animation-direction: alternate;
+    animation-delay: 900ms;
+    transform:translateY(-50px);
+    opacity: 0;
+  }
+
+  &__bg {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+
+    &:after {
+      content:"";
+      width: 100%;
+      height: 100%;
+      display:block;
+      position:absolute;
+      top:0;
+      left:0;
+      background: rgba(11, 26, 58, 0.6);
+      animation: blurOut 1000ms ease-out forwards;
+      animation-delay: 1000ms;
+      backdrop-filter: blur(60px);
+    }
+
+    & > video {
+      display:block;
+      height:100%;
+      width:100%;
+      object-fit: cover;
+      object-position:center;
+    }
+  }
+}
+
+@keyframes blurOut {
+  from {
+    backdrop-filter: blur(60px);
+  }
+  to {
+    backdrop-filter: blur(0px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    transform:translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform:translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+

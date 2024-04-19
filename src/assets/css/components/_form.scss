@@ -1,0 +1,39 @@
+/*-----------------------------
+Forms
+-----------------------------*/
+.btn {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: white;
+  padding:15px 32px 13px 32px;
+  background:var(--c-primary);
+  display:inline-flex;
+  z-index: 3;
+  position: relative;
+  box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.1);
+  transition:var(--transition);
+  cursor:pointer;
+
+  &:hover {
+    background:var(--c-primary-dark);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+#{$inputs} {
+  background:white;
+  padding:11px 16px;
+  width: 100%;
+  display:block;
+  color:#222;
+  font-weight:500;
+
+  @include placeholder {
+    color:#999;
+    font-weight:400;
+  }
+}
