@@ -1,3 +1,6 @@
+import poster from "../../assets/images/hero-poster.jpg";
+import video from "../../assets/videos/video.mp4";
+
 const Hero = () => {
   return (
     <div className="hero" id="hero">
@@ -18,18 +21,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="hero__bg">
-        {/* <video
-            autoplay=""
-            muted=""
-            loop=""
-            id="hero"
-            poster="images/hero-poster.jpg"
-            playsinline=""
-            defaultmuted=""
-            preload="auto"
-          >
-            <source src="videos/1032456449.mp4" type="video/mp4" />
-          </video> */}
+        <video src={video} poster={poster} autoPlay muted loop></video>
       </div>
     </div>
   );

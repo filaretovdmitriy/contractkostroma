@@ -24,7 +24,7 @@ Forms
 }
 
 
-#{$inputs} {
+input[type="text"] {
   background:white;
   padding:11px 16px;
   width: 100%;
@@ -32,8 +32,5 @@ Forms
   color:#222;
   font-weight:500;
 
-  @include placeholder {
-    color:#999;
-    font-weight:400;
-  }
+  
 }
