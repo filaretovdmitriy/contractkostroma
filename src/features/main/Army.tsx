@@ -8,7 +8,8 @@ import ArmyT04 from "../../assets/images/army-type-04.jpg";
 import ArmyT05 from "../../assets/images/army-type-05.jpg";
 
 const Army = () => {
-  const [ ] = useKeenSlider<HTMLDivElement>(
+  
+  const [sliderRef] = useKeenSlider<HTMLDivElement>(
     {
       slideChanged() {
         console.log("!");
