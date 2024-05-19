@@ -1,4 +1,12 @@
+import "keen-slider/keen-slider.css";
+import { useKeenSlider} from "keen-slider/react"
+
 const Gallery = () => {
+
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+
+  },[])
+
     return (
         <div className="gallery" id="gallery">
         <div className="gallery__container">
@@ -16,7 +24,7 @@ const Gallery = () => {
               </svg>
             </div>
           </div>
-          <div className="gallery__grid">
+          <div className="gallery__grid keen-slider" ref={sliderRef}>
             <a
               className="gallery__item glightbox"
               href="images/gallery-image-01.jpg"

@@ -1,9 +1,11 @@
+import soldier from "../../assets/images/content-image-02.png";
+
 const Howto = () => {
   return (
     <div className="howto" id="howto">
       <div className="howto__container">
         <div className="howto__image">
-          <img src="images/content-image-02.png" />
+          <img src={soldier} />
         </div>
         <div className="howto__content">
           <div className="howto__title">

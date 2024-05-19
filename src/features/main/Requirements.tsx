@@ -1,3 +1,5 @@
+import soldier from '../../assets/images/content-image-01.png';
+
 const Requirements = () => {
   return (
     <div className="requirements" id="requirements">
@@ -35,7 +37,7 @@ const Requirements = () => {
           </div>
         </div>
         <div className="requirements__image">
-          <img src="images/content-image-01.png" />
+          <img src={soldier} />
         </div>
       </div>
     </div>

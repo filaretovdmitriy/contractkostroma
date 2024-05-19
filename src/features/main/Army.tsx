@@ -1,4 +1,27 @@
+import "keen-slider/keen-slider.css";
+import { useKeenSlider } from "keen-slider/react";
+
+import ArmyT01 from "../../assets/images/army-type-01.jpg";
+import ArmyT02 from "../../assets/images/army-type-02.jpg";
+import ArmyT03 from "../../assets/images/army-type-03.jpg";
+import ArmyT04 from "../../assets/images/army-type-04.jpg";
+import ArmyT05 from "../../assets/images/army-type-05.jpg";
+
 const Army = () => {
+  const [ ] = useKeenSlider<HTMLDivElement>(
+    {
+      slideChanged() {
+        console.log("!");
+      },
+      loop: true,
+      slides: {
+        perView: 5,
+        spacing: 15,
+      },
+    },
+    []
+  );
+
   return (
     <div className="army" id="army">
       <div className="army__container">
@@ -17,42 +40,42 @@ const Army = () => {
             </svg>
           </div>
         </div>
-        <div className="army__grid">
-          <div className="army__item">
+        <div className="army__grid keen-slider" ref={sliderRef}>
+          <div className="army__item keen-slider__slide">
             <div className="army__image">
-              <img src="images/army-type-01.jpg" />
+              <img src={ArmyT01} />
             </div>
             <div className="army__text">
               <div className="heading-3">Артиллерия</div>
             </div>
           </div>
-          <div className="army__item">
+          <div className="army__item keen-slider__slide">
             <div className="army__image">
-              <img src="images/army-type-02.jpg" />
+              <img src={ArmyT02} />
             </div>
             <div className="army__text">
               <div className="heading-3">ВДВ</div>
             </div>
           </div>
-          <div className="army__item">
+          <div className="army__item keen-slider__slide">
             <div className="army__image">
-              <img src="images/army-type-03.jpg" />
+              <img src={ArmyT03} />
             </div>
             <div className="army__text">
               <div className="heading-3">РХБЗ</div>
             </div>
           </div>
-          <div className="army__item">
+          <div className="army__item keen-slider__slide">
             <div className="army__image">
-              <img src="images/army-type-04.jpg" />
+              <img src={ArmyT04} />
             </div>
             <div className="army__text">
               <div className="heading-3">Мотострелковые</div>
             </div>
           </div>
-          <div className="army__item">
+          <div className="army__item keen-slider__slide">
             <div className="army__image">
-              <img src="images/army-type-05.jpg" />
+              <img src={ArmyT05} />
             </div>
             <div className="army__text">
               <div className="heading-3">иные</div>
