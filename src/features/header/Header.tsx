@@ -1,6 +1,10 @@
 import logo from "../../assets/images/logo.svg";
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch } from "../../store/store";
+import { toggleMenu } from "../../store/menuSlice";
 const Header = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const { isOpen } = useSelector((state: RootState) => state.menu);
   return (
     <header className="header">
       <div className="header__container">
@@ -22,51 +26,62 @@ const Header = () => {
             Перезвоните мне
           </a>
         </div>
-        <div className="nav" x-show="nav">
-          <div className="nav__container">
-            <a className="nav__item smooth" href="#payments">
-              Выплаты и льготы
-            </a>
-            <a className="nav__item smooth" href="#support">
-              Меры поддержки
-            </a>
-            <a className="nav__item smooth" href="#requirements">
-              Требования
-            </a>
-            <a className="nav__item smooth" href="#steps">
-              Вопрос-ответ
-            </a>
-            <a className="nav__item smooth" href="#help">
-              Помощь семьям
-            </a>
-            <a className="nav__item smooth" href="#howto">
-              Как заключить контракт?
-            </a>
-            <a className="nav__item smooth" href="#contacts">
-              Контакты
-            </a>
+        {isOpen ? (
+          <div className="nav" x-show="nav">
+            <div className="nav__container">
+              <a className="nav__item smooth" href="#payments">
+                Выплаты и льготы
+              </a>
+              <a className="nav__item smooth" href="#support">
+                Меры поддержки
+              </a>
+              <a className="nav__item smooth" href="#requirements">
+                Требования
+              </a>
+              <a className="nav__item smooth" href="#steps">
+                Вопрос-ответ
+              </a>
+              <a className="nav__item smooth" href="#help">
+                Помощь семьям
+              </a>
+              <a className="nav__item smooth" href="#howto">
+                Как заключить контракт?
+              </a>
+              <a className="nav__item smooth" href="#contacts">
+                Контакты
+              </a>
+            </div>
           </div>
-        </div>
+        ) : null}
         <div className="nav__icon nav__icon_menu">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            x-show="!nav"
-            x-cloak=""
-          >
-            <path d="M0 0h25v1H0V0zm0 12h25v1H0v-1zm0 12h25v1H0v-1z" />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            x-show="nav"
-            x-cloak=""
-          >
-            <path d="M0 24.305 24.305 0 25 .694.694 25 0 24.305z" />
-            <path d="M25 24.305.694 0 0 .694 24.306 25l.694-.695z" />
-          </svg>
+          {isOpen ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              x-show="nav"
+              x-cloak=""
+              onClick={() => {
+                dispatch(toggleMenu());
+              }}
+            >
+              <path d="M0 24.305 24.305 0 25 .694.694 25 0 24.305z" />
+              <path d="M25 24.305.694 0 0 .694 24.306 25l.694-.695z" />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              x-show="!nav"
+              x-cloak=""
+              onClick={() => {
+                dispatch(toggleMenu());
+              }}
+            >
+              <path d="M0 0h25v1H0V0zm0 12h25v1H0v-1zm0 12h25v1H0v-1z" />
+            </svg>
+          )}
         </div>
       </div>
     </header>
