@@ -3,8 +3,6 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-
-
 import videoJoin from "../../assets/videos/video-join.mp4";
 import imageJoin from "../../assets/images/join-poster.jpg";
 
@@ -15,9 +13,9 @@ type Inputs = {
 };
 
 const Schema = yup.object().shape({
-  fio: yup.string().required('Поле ФИО обязательно для заполнения'),
-  category: yup.string().required('Поле Категория обязательно для заполнения'),
-  phone: yup.string().required('Поле Телефон обязательно для заполнения'),
+  fio: yup.string().required("Поле ФИО обязательно для заполнения"),
+  category: yup.string().required("Поле Категория обязательно для заполнения"),
+  phone: yup.string().required("Поле Телефон обязательно для заполнения"),
 });
 
 const Join = () => {
@@ -38,8 +36,6 @@ const Join = () => {
     reset();
   };
 
-
-
   return (
     <div className="join" id="join">
       <div className="join__container">
@@ -52,34 +48,41 @@ const Join = () => {
           </div>
           <form className="join__form" onSubmit={handleSubmit(onSubmit)}>
             <div className="join__form-row">
-            <Controller
+              <Controller
                 name="fio"
                 control={control}
                 defaultValue=""
-                render = {({field})=> <input {...field} type="text" placeholder="ФИО"/>}  
-
+                render={({ field }) => (
+                  <input {...field} type="text" placeholder="ФИО" />
+                )}
               />
               {errors.fio && <p>{errors.fio.message}</p>}
-              
             </div>
             <div className="join__form-row">
               <Controller
                 name="category"
                 control={control}
                 defaultValue=""
-                render = {({field})=> <input {...field} type="text" placeholder="Категория, как в военном билете (А, Б)"/>}
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    type="text"
+                    placeholder="Категория, как в военном билете (А, Б)"
+                  />
+                )}
               />
-              {errors.category  &&  <p>{errors.category.message}</p>}
+              {errors.category && <p>{errors.category.message}</p>}
             </div>
             <div className="join__form-row">
               <Controller
                 name="phone"
                 control={control}
                 defaultValue=""
-                render = {({field})=> <input {...field} type="text" placeholder="Телефон"/>}
+                render={({ field }) => (
+                  <input {...field} type="text" placeholder="Телефон" />
+                )}
               />
-              {errors.phone  &&   <p>{errors.phone.message}</p>}
-             
+              {errors.phone && <p>{errors.phone.message}</p>}
             </div>
             <input className="btn" type="submit" value="Записаться на службу" />
           </form>
