@@ -33,9 +33,9 @@ import "./assets/css/components/_typo.scss";
 
 
 
-import { Header } from "./features/header/Header";
+import { Header } from "./widgets/header/Header";
 import { Main } from "./features/main/Main";
-import { Footer } from "./features/footer/Footer";
+import { Footer } from "./widgets/footer/Footer";
 
 function App() {
   return (

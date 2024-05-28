@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+
 
 import videoJoin from "../../assets/videos/video-join.mp4";
 import imageJoin from "../../assets/images/join-poster.jpg";
@@ -10,13 +14,22 @@ type Inputs = {
   phone: string;
 };
 
+const Schema = yup.object().shape({
+  fio: yup.string().required(),
+  category: yup.string().required(),
+  phone: yup.string().required(),
+});
+
 const Join = () => {
   const {
+    control,
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>({
+    resolver: yupResolver(Schema),
+  });
 
   const [sent, setSent] = useState<boolean>(false);
 
@@ -24,6 +37,9 @@ const Join = () => {
     console.log(data);
     setSent(true);
   };
+
+
+
   return (
     <div className="join" id="join">
       <div className="join__container">
@@ -36,11 +52,15 @@ const Join = () => {
           </div>
           <form className="join__form" onSubmit={handleSubmit(onSubmit)}>
             <div className="join__form-row">
-              <input
-                type="text"
-                placeholder="Ваше имя"
-                {...register("fio", { required: true })}
+            <Controller
+                name="fio"
+                control={control}
+                defaultValue=""
+                render = {({field})=> <input {...field} />}  
+
               />
+              {errors.fio && <p>{errors.fio.message}</p>}
+              
             </div>
             <div className="join__form-row">
               <input
