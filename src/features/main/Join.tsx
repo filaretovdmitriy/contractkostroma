@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {useSendFeedback} from "../../api/endpoints/feedback/feedback";
 import * as yup from "yup";
 
 import videoJoin from "../../assets/videos/video-join.mp4";
@@ -12,11 +13,15 @@ type Inputs = {
   phone: string;
 };
 
+
+
 const Schema = yup.object().shape({
   fio: yup.string().required("Поле ФИО обязательно для заполнения"),
   category: yup.string().required("Поле Категория обязательно для заполнения"),
   phone: yup.string().required("Поле Телефон обязательно для заполнения"),
 });
+
+
 
 const Join = () => {
   const {
@@ -29,9 +34,12 @@ const Join = () => {
   });
 
   const [sent, setSent] = useState<boolean>(false);
+  const sendFeedback  = useSendFeedback;
+ 
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    
+    sendFeedback(data);
     setSent(true);
     reset();
   };
