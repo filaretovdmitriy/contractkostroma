@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {useSendFeedback} from "../../api/endpoints/feedback/feedback";
+import { useSendFeedback } from "../../api/endpoints/feedback/feedback";
 import * as yup from "yup";
 
 import videoJoin from "../../assets/videos/video-join.mp4";
@@ -13,15 +12,11 @@ type Inputs = {
   phone: string;
 };
 
-
-
 const Schema = yup.object().shape({
   fio: yup.string().required("Поле ФИО обязательно для заполнения"),
   category: yup.string().required("Поле Категория обязательно для заполнения"),
   phone: yup.string().required("Поле Телефон обязательно для заполнения"),
 });
-
-
 
 const Join = () => {
   const {
@@ -33,14 +28,10 @@ const Join = () => {
     resolver: yupResolver(Schema),
   });
 
-  const [sent, setSent] = useState<boolean>(false);
-  const sendFeedback  = useSendFeedback;
- 
+  const { mutate, isSuccess } = useSendFeedback();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    
-    sendFeedback(data);
-    setSent(true);
+    mutate(data);
     reset();
   };
 
@@ -54,7 +45,14 @@ const Join = () => {
           <div className="join__text">
             Укажите ФИО, категорию годности, телефон и время, удобное для звонка
           </div>
-          <form className="join__form" onSubmit={handleSubmit(onSubmit)}>
+
+          {isSuccess ? (
+            <div className="join__success">
+              Спасибо за предоставление данных. Мы свяжемся с вами в течение 5
+              рабочих дней
+            </div>
+          ) : (
+            <form className="join__form" onSubmit={handleSubmit(onSubmit)}>
             <div className="join__form-row">
               <Controller
                 name="fio"
@@ -94,6 +92,9 @@ const Join = () => {
             </div>
             <input className="btn" type="submit" value="Записаться на службу" />
           </form>
+          )}
+
+         
         </div>
         <div className="join__image">
           <video src={videoJoin} poster={imageJoin} autoPlay muted loop></video>

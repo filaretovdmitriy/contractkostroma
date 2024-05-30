@@ -1,12 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import queryClient from "../../queryClients";
 import apiClient from "../../axios";
-const useSendFeedback = (data: any) => {
+const useSendFeedback = () => {
   return useMutation<any, any, any, unknown>({
-    mutationKey: ["feedback"],
-    mutationFn: async (data) => {
-        const responce = await apiClient.post('/feedback/', data);
-        queryClient.invalidateQueries({ queryKey: ["feedback"] });
+        mutationFn: async (request) => {
+        const responce = await apiClient.post('/feedback/', request);
         return responce.data;
     },
   });
