@@ -31,18 +31,19 @@ import "./assets/css/components/_steps.scss";
 import "./assets/css/components/_support.scss";
 import "./assets/css/components/_typo.scss";
 
-
-
-import { Header } from "./widgets/header/Header";
-import { Main } from "./features/main/Main";
-import { Footer } from "./widgets/footer/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { MainPage } from "./pages/main";
+import { AuthPage } from "./pages/auth";
 
 function App() {
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="auth" element={<AuthPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
