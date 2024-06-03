@@ -1,26 +1,26 @@
 import { createAsyncThunk, PayloadAction, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import apiClient from "../api/axios"
 
 interface User {
   username: string;
 }
 
 interface AuthState {
-  isAudhentificated: boolean;
+  isAuthentificated: boolean;
   user: User | null;
   token: string | null;
 }
 
 const initialState = {
-  isAudhentificated: false,
+  isAuthentificated: false,
   user: null,
   token: null,
 };
 
-const login = createAsyncThunk(
+export const login = createAsyncThunk(
   "auth/login",
   async (credentials: { username: string; password: string }) => {
-    const response = await axios.post("/auth/login", credentials);
+    const response = await apiClient.post("/auth/login/", credentials);
     return response.data;
   }
 );
@@ -30,7 +30,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state: AuthState) => {
-      state.isAudhentificated = false;
+      state.isAuthentificated = false;
       state.user = null;
       state.token = null;
     },
@@ -39,7 +39,7 @@ const authSlice = createSlice({
     builder.addCase(
       login.fulfilled,
       (state, action: PayloadAction<{ user: User; token: string }>) => {
-        state.isAudhentificated = true;
+        state.isAuthentificated = true;
         state.user = action.payload.user;
         state.token = action.payload.token;
       }
