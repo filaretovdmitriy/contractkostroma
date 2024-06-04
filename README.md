@@ -1,3 +1,5 @@
+# Технологии ради технологий, проект давно запущен, но дополнительно переписывается на другой стек ради удовольствия :)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
